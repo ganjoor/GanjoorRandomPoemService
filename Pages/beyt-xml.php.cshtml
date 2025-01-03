@@ -1,0 +1,23 @@
+﻿@page
+@model GanjoorRandomPoemService.Pages.BeytXmlModel
+@{
+    Layout = null;
+}
+<?xml version="1.0" encoding="utf-8" ?>
+<ganjoor>
+    @foreach (var poem in Model.Poems)
+    {
+            <poem>
+                @foreach (var couplet in poem.Couplets)
+                {
+                @Html.Raw("<b"+couplet.Index.ToString()+">")
+                    <m1>@couplet.Verse1</m1>
+                    <m2>@couplet.Verse2</m2>
+                @Html.Raw("</b" + couplet.Index.ToString() + ">")
+                }
+                <poet>@poem.PoetName</poet>
+                <url>@poem.PoemUrl</url>
+            <count>@poem.Couplets.Length</count>
+            </poem>
+    }
+</ganjoor>

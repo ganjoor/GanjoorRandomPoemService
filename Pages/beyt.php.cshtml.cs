@@ -33,12 +33,23 @@ namespace GanjoorRandomPoemService.Pages
                 twoCouplets = Request.Query["a"] == "1";
             }
 
-            var response = await _httpClient.GetAsync($"https://api.ganjoor.net/api/ganjoor/poem/random?poetId={poetId}");
+            var response = await Client.GetAsync($"{Configuration["APIRoot"]}/api/ganjoor/poem/random?poetId={poetId}");
             if (!response.IsSuccessStatusCode)
             {
                 return BadRequest(JsonConvert.DeserializeObject<string>(await response.Content.ReadAsStringAsync()));
             }
             var poem = JsonConvert.DeserializeObject<dynamic>(await response.Content.ReadAsStringAsync());
+            if(poem == null)
+            {
+                //this sometimes happen, I do not know why but it worth a retry for fixing probable bugs
+                //retry with no poetId!
+                response = await Client.GetAsync($"{Configuration["APIRoot"]}/api/ganjoor/poem/random");
+                if (!response.IsSuccessStatusCode)
+                {
+                    return BadRequest(JsonConvert.DeserializeObject<string>(await response.Content.ReadAsStringAsync()));
+                }
+                poem = JsonConvert.DeserializeObject<dynamic>(await response.Content.ReadAsStringAsync());
+            }
             PoemUrl = $"https://ganjoor.net{poem.fullUrl}";
             PoetName = poem.fullTitle;
             PoetName = PoetName.Substring(0, PoetName.IndexOf("»")).Trim();
@@ -77,10 +88,13 @@ namespace GanjoorRandomPoemService.Pages
             return Page();
         }
 
-        protected readonly HttpClient _httpClient;
-        public BeytPHPModel(HttpClient httpClient)
+        protected readonly HttpClient Client;
+
+        protected readonly IConfiguration Configuration;
+        public BeytPHPModel(HttpClient httpClient, IConfiguration configuration)
         {
-            _httpClient = httpClient;
+            Client = httpClient;
+            Configuration = configuration;
         }
     }
 }
