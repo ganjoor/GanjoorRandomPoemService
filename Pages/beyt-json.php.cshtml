@@ -1,0 +1,11 @@
+﻿@page
+@model GanjoorRandomPoemService.Pages.BeytJsonModel
+@{
+    Layout = null;
+}
+{
+    "m1": "@(Model.Couplets.First().Verse1)",
+    "m2": "@(Model.Couplets.First().Verse2)",
+    "poet": "@(Model.PoetName)",
+    "url": "@(Model.PoemUrl)"
+}
