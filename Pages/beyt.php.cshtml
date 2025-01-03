@@ -1,0 +1,44 @@
+﻿@page
+@model GanjoorRandomPoemService.Pages.BeytPHPModel
+@{
+    Layout = null;
+}
+  var gabjoorblock = '';
+  var ganjoorblocktitle;
+  if(ganjoorblocktitle == undefined)
+  {
+    ganjoorblocktitle = 'دردانه‌ای از گنجور';
+  }
+  gabjoorblock += '<div class="ganjoor-block">';
+  gabjoorblock += '<div class="ganjoor-block-title">';
+  gabjoorblock += ganjoorblocktitle;
+  gabjoorblock += '</div>';
+  gabjoorblock += '<div class="ganjoor-poem-block">';
+ @foreach(var couplet in Model.Couplets)
+ {
+     <text>
+  gabjoorblock += '<div class="ganjoor-m1">@couplet.Verse1</div>';
+  gabjoorblock += '<div class="ganjoor-m2">@couplet.Verse2</div>';
+     </text>
+ }
+  gabjoorblock += '<br style="clear:both;" />';
+  gabjoorblock += '</div>';
+  gabjoorblock += '<div class="ganjoor-footer">';
+  gabjoorblock += '<div class="ganjoor-poet"><a href="@Model.PoemUrl">@Model.PoetName</a></div>';
+  gabjoorblock += '<br style="clear:both;" />';
+  gabjoorblock += '</div>';
+  gabjoorblock += '</div>';
+  @if(string.IsNullOrEmpty(Model.BlockToUpdate))
+  {
+      <text>
+  document.write(gabjoorblock);
+      </text>
+  }
+  else
+  {
+    <text>
+  document.getElementById('@Model.BlockToUpdate').innerHTML = gabjoorblock;
+    </text>
+  }
+
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="fa">
+
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="fa" />
+<title>کدهای گنجور  &raquo; بدلخواهسازی</title>
+<meta name="description" content="ساختار کد نمایش شعر گنجور و نحوۀ سفارشی‌سازی آن" />
+<meta name="keywords" content="کد شعر , وبلاگ , بلاگفا , پرشین بلاگ , شعر , بیت , فارسی , شاعر , ایران , فال حافظ , خیام , blogfa , persianblog" />
+
+<style type="text/css">
+@import url(style.css);
+</style>	
+</head>
+<body>
+<h1>
+<a href="http://c.ganjoor.net"><img src="img/gcodes.gif" alt="کدهای گنجور" /></a>
+</h1>
+<div id="navbar">
+<ul id="nav">
+        <li><a href="index.html">خانه</a></li> 
+        <li><a href="more.html">توضیح بیشتر</a></li>        
+        <li><a href="customize.html" class="selected">بدلخواهسازی</a></li>   
+        <li><a href="optimize.html">بهینه‌سازی</a></li>
+         <li><a href="program.html">برنامه‌نویسی</a></li>            
+         <li><a href="samplesites.html">نمونه سایتها</a></li>            
+</ul>
+</div>
+<div id="main">
+<h2>ساختار کد نمایش شعر گنجور</h2>
+<p>
+کد نمایش شعر گنجور دو بخش دارد. بخش اول مربوط به ظاهر بلوک شعر است (کدهای CSS که بین دو تگ style قرار دارند) و بخش دوم مربوط به اجرای فرایند دریافت شعر از سرور کدهای گنجور است (کد جاوا اسکریپت یا JavaScript).
+</p>
+<img src="img/gbparts.jpg" alt="بخشهای کد گنجور" />
+<p>
+بخش دوم (جاوا اسکریپت) نیز شامل دو بخش است (در تصویر بالا دو خط کد) که بخش اول که مشخص کنندۀ عنوان بلوک نمایش شعر است قابل حذف است (در صورت حذف این بخش، عنوان بلوک نمایش شعر «دردانه‌ای از گنجور» خواهد بود) و بخش دوم عهده‌دار اجرای بخش اصلی بارگذاری شعر تصادفی از سرور کدهای گنجور است.
+</p>
+<p>
+برای طراحی یا بدلخواهسازی قالبهای نمایش شعر معمولاً باید بخش اول را دستکاری کرد و برای نمایش شعر از شاعر خاص یا نمایش دو بیت شعر برای رباعیها خط دوم کد جاوا اسکریپت را.
+</p>
+<h2>نمایش شعر از یک شاعر خاص</h2>
+<p>
+کد نمایش شعر گنجور به طور پیش‌فرض یک بیت شعر از حافظ، خیام، ابوسعید ابوالخیر، صائب تبریزی، سعدی، باباطاهر عریان، مولوی، اوحدی، خواجوی کرمانی، شهریار، عراقی، فروغی بسطامی، سلمان ساوجی، محتشم کاشانی، امیرخسرو دهلوی، سیف فرغانی، عبید زاکانی، هاتف اصفهانی یا رهی معیری را به صورت تصادفی انتخاب کرده، نمایش می‌دهد. اگر می‌خواهید محدودۀ انتخاب بیت را به یک شاعر خاص محدود کنید باید به جای کد پیش‌فرض، در کد جاوا اسکریپت دریافت شعر، پارامتر «شاعر» را تعیین کنید.
+</p>
+<p>
+پارامتر «شاعر» به صورت «عدد=p» تعیین می‌شود که در این عبارت عدد می‌تواند حافظ (2)، خیام (3)، ابوسعید ابوالخیر (26)، صائب (22)، سعدی (7)، باباطاهر (28)، مولوی (5)، اوحدی (19)، خواجو (20)، شهریار (35)، عراقی (21)، فروغی بسطامی (32)، سلمان ساوجی (40)، محتشم کاشانی (29)، امیرخسرو دهلوی (34)، سیف فرغانی (31)، عبید زاکانی (33)، هاتف اصفهانی (25) یا رهی معیری (41) باشد. به عنوان نمونه برای نمایش یک بیت از حافظ (فال حافظ) کد جاوا اسکریپت به صورت زیر خواهد بود:
+</p>
+<div style="width:100%;text-align:left">
+<textarea class="inputTextarea" rows="1" cols="120" style="direction:ltr;text-align:left;">
+&lt;script type="text/javascript" language="JavaScript" src="http://c.ganjoor.net/beyt.php?p=2"&gt;&lt;/script&gt;
+</textarea>
+</div>
+<p>
+آنچه در کد بالا باعث انتخاب اشعار حافظ می‌شود عبارت «p=2» است که می‌تواند با «p=3» برای خیام، «p=26» برای ابوسعید و ... جایگزین شود.
+</p>
+<h2>نمایش دو بیت برای رباعیها و دوبیتیها</h2>
+<p>
+از آنجا که معمولاً یک بیت از یک رباعی یا دوبیتی معنی کاملی را نمی‌رساند و لازم است بیت دیگر نیز نمایش داده شود، می‌توان کد نمایش شعر گنجور را به گونه‌ای تنظیم کرد که برای این گونه شعرها، هر دو بیت شعر را نمایش دهد. برای این کار باید عبارت «a=1» را به کد جاوا اسکریپت نمایش شعر اضافه کنید:
+</p>
+<div style="width:100%;text-align:left">
+<textarea class="inputTextarea" rows="1" cols="120" style="direction:ltr;text-align:left;">
+&lt;script type="text/javascript" language="JavaScript" src="http://c.ganjoor.net/beyt.php?a=1"&gt;&lt;/script&gt;
+</textarea>
+</div>
+<p>
+کد بالا برای اشعار عادی یک بیت و برای رباعیها و دوبیتیها دو بیت را نمایش می‌دهد. ممکن است بخواهید با تعیین شاعر از میان شاعرانی که فقط دوبیتی یا رباعیهای آنها از طریق کد نمایش شعر گنجور در دسترس است (خیام با کد 3، باباطاهر با کد 28 و ابوسعید با کد 26) کد را طوری تنظیم کنید که همیشه دو بیت نمایش دهد. مثلاً با ترکیب آن با «p=3» برای نمایش فقط اشعار خیام می‌توانید به این هدف دست پیدا کنید:
+</p>
+<div style="width:100%;text-align:left">
+<textarea class="inputTextarea" rows="1" cols="120" style="direction:ltr;text-align:left;">
+&lt;script type="text/javascript" language="JavaScript" src="http://c.ganjoor.net/beyt.php?p=3&amp;amp;a=1"&gt;&lt;/script&gt;
+</textarea>
+</div>
+<h2>تعیین عنوان بلوک نمایش شعر</h2>
+<p>
+برای تعیین عنوان بلوک و تغییر آن از مقدار پیش‌فرض «دردانه‌ای از گنجور» در خط اول کدهای جاوا اسکریپت متغیر ganjoorblocktitle را مقدار دهی کنید. مثلاً برای تغییر آن به «سخن عشق» خط مورد نظر را باید به این صورت تغییر دهید:
+</p>
+<div style="width:100%;text-align:left">
+<textarea class="inputTextarea" rows="1" cols="120" style="direction:ltr;text-align:left;">
+&lt;script type="text/javascript" language="JavaScript"&gt;ganjoorblocktitle = 'سخن عشق';&lt;/script&gt;
+</textarea>
+</div>
+<h2>طراحی قالب دلخواه، سفارشی‌سازی رنگها و ...</h2>
+<p>
+برای طراحی قالب دلخواه یا سفارشی‌سازی رنگها باید با CSS آشنایی داشته باشید. تصویر زیر شمایی از ساختار بلوک نمایش شعر را در اختیارتان می‌گذارد:
+</p>
+<img src="img/gcssguide.png" alt="شمای بلوک نمایش شعر گنجور" />
+<p>
+می‌توانید قالبهای پیش‌فرض و نمونه‌های در دسترس قرار گرفته در <a href="samples.html">این صفحه</a> را از نظر بگذرانید.
+</p>
+</div>
+<div id="footer">
+<a href="http://c.ganjoor.net">خانه</a> | <a href="http://ganjoor.net">گنجور</a> | <a href="http://ganjoor.sourceforge.net">گنجور رومیزی</a> | <a href="http://blog.ganjoor.net">تازه‌های گنجور</a> | <a href="http://ganjoor.net/contact/">تماس</a>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-63626-8");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
