@@ -28,6 +28,6 @@ app.MapRazorPages()
 
 app.UseFileServer();
 app.UseStaticFiles();
-app.UseDefaultFiles("/index.html");
+
 
 app.Run();
