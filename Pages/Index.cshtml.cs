@@ -6,8 +6,6 @@ namespace GanjoorRandomPoemService.Pages
     {
         public void OnGet()
         {
-            ViewData["Title"] = "خانه";
-            ViewData["Url"] = "/";
         }
     }
 }
