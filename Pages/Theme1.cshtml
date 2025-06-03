@@ -1,0 +1,104 @@
+﻿@page
+@model GanjoorRandomPoemService.Pages.Theme1Model
+@{
+    ViewData["Title"] = "بلوک با عرض منعطف و مصرعهای زیر هم";
+    ViewData["Url"] = "/theme1";
+}
+<style type="text/css">
+    .ganjoor-block {
+        width: 100%;
+        display: block;
+        border: 2px solid #000;
+        margin: auto;
+        text-align: center;
+        background-color: #fff;
+        font: normal 12px tahoma;
+    }
+
+    .ganjoor-block-title {
+        display: block;
+        width: 100%;
+        border-bottom: 2px solid #000;
+        background-color: #aaa;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        margin: 0px;
+    }
+
+    .ganjoor-poem-block {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+        background-color: #fff;
+    }
+
+    .ganjoor-m1, .ganjoor-m2 {
+        width: 100%;
+        float: right;
+        text-align: center;
+        display: block;
+    }
+
+    .ganjoor-footer {
+        display: block;
+        width: 100%;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        background-color: #fff;
+    }
+
+    .ganjoor-poet {
+        display: block;
+        width: 40%;
+        float: left;
+        text-align: right;
+    }
+
+        .ganjoor-poet a {
+            text-decoration: none;
+            color: #000
+        }
+</style>
+<p>
+    عرض این بلوک به طور خودکار برابر با عرض بلوک حاوی آن تنظیم می‏شود و به لحاظ آن که مصرعها زیر هم قرار گرفته‏اند به فضای کمی نیاز داد و می‏شود آن را در نوار کناری وبلاگها جا داد. نمونه‏ی نمایش یک تک بیت با این کد را هنگامی که عرض بلوک حاوی آن بزرگ است را می‏بینید:
+</p>
+<div id="takbeyt-sad"></div>
+<p>
+    اگر عرض بلوک حاوی آن محدود باشد:
+</p>
+<div style="width:250px;text-align:center;margin:auto">
+    <div id="takbeyt"></div>
+</div>
+<p>
+    نمونه‏ی نمایش رباعی با این کد (عرض بلوک حاوی محدود است):
+</p>
+<div style="width:250px;text-align:center;margin:auto">
+    <div id="robaee"></div>
+</div>
+<p>
+    برای بارگذاری مجدد صفحه با شعرهای تصادفی دیگر <a href="http://c.ganjoor.net/theme">اینجا</a> کلیک کنید.
+</p>
+<p>
+    برای درج در قالب وبلاگ -ابتدا از قالب کنونی خود پشتیبان بگیرید، محل درج را مشخص کنید و سپس- این کد را از جعبه‏ی متنی زیر کپی و در محل مناسب درج کنید:
+</p>
+<div style="width:100%;text-align:left">
+<textarea class="inputTextarea" rows="13" cols="120" style="direction:ltr;text-align:left;">
+&lt;style type="text/css"&gt;
+.ganjoor-block{width:100%;display:block;border:2px solid #000;margin:auto;text-align:center;background-color:#fff;font:normal 12px tahoma;}
+.ganjoor-block-title {display:block;width:100%;border-bottom:2px solid #000;background-color:#aaa;padding-top:4px;padding-bottom:4px;margin:0px;}
+.ganjoor-poem-block{display:block;width:100%;margin-bottom:5px;background-color:#fff;}
+.ganjoor-m1, .ganjoor-m2{width:100%; float:right;text-align:center;display:block;}
+.ganjoor-footer{display:block;width:100%;padding-top:2px;padding-bottom:2px;background-color:#fff;}
+.ganjoor-poet{display:block;width:40%;float:left;text-align:right;}
+.ganjoor-poet a{text-decoration:none; color:#000}
+&lt;/style>
+&lt;script type="text/javascript" language="JavaScript" src="http://c.ganjoor.net/beyt.php"&gt;&lt;/script&gt;
+</textarea>
+</div>
+<script type="text/javascript" language="JavaScript" src="http://c.ganjoor.net/beyt.php?block=takbeyt-sad"></script>
+
+<script type="text/javascript" language="JavaScript" src="http://c.ganjoor.net/beyt.php?block=takbeyt"></script>
+
+<script type="text/javascript" language="JavaScript">ganjoorblocktitle = 'پندی از خیام';</script>
+<script type="text/javascript" language="JavaScript" src="http://c.ganjoor.net/beyt.php?p=3&amp;a=1&amp;block=robaee"></script>
+
