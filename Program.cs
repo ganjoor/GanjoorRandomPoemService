@@ -18,6 +18,32 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error");
 }
 
+// Redirect .html requests to extensionless URLs
+app.Use(async (context, next) =>
+{
+    var path = context.Request.Path;
+    if (path.HasValue && path.Value.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
+    {
+        // Remove .html extension
+        var newPath = path.Value[..^5]; // Remove last 5 characters (".html")
+
+        // Special case: root index.html should redirect to home
+        if (newPath.Equals("/index", StringComparison.OrdinalIgnoreCase))
+        {
+            newPath = "/";
+        }
+
+        // Preserve query string
+        var query = context.Request.QueryString;
+        var newUrl = $"{newPath}{query}";
+
+        context.Response.Redirect(newUrl, permanent: true);
+        return;
+    }
+
+    await next();
+});
+
 app.UseRouting();
 
 app.UseAuthorization();
