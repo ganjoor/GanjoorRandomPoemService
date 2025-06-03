@@ -1,6 +1,102 @@
 ﻿@page
 @model GanjoorRandomPoemService.Pages.Theme3Model
 @{
-    ViewData["Title"] = "بدلخواهسازی";
-    ViewData["Url"] = "/customize";
+    ViewData["Title"] = "بلوک با عرض ثابت ۲۵۰ پیکسل تهیه شده با استفاده از تصاویر سایت پرسوپدیا نقطه کام";
+    ViewData["Url"] = "/theme3";
 }
+<style type="text/css">
+    .ganjoor-block {
+        width: 250px;
+        display: block;
+        margin: auto;
+        text-align: center;
+        background-image: url('http://c.ganjoor.net/t/3/t.gif');
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: top;
+        padding-top: 99px
+    }
+
+    .ganjoor-block-title {
+        display: block;
+        font: normal 13px tahoma;
+        background-image: url('http://c.ganjoor.net/t/3/tm.gif');
+        background-repeat: no-repeat;
+        height: 26px;
+        padding-top: 4px;
+        margin: 0px;
+    }
+
+    .ganjoor-poem-block {
+        display: block;
+        width: 100%;
+        background-image: url('http://c.ganjoor.net/t/3/m.gif');
+        background-repeat: repeat-y;
+        padding-top: 30px;
+    }
+
+    .ganjoor-m1 {
+        width: 100%;
+        display: block;
+    }
+
+    .ganjoor-m2 {
+        width: 100%;
+        display: block;
+    }
+
+    .ganjoor-footer {
+        display: block;
+        width: 100%;
+        display: block;
+        background-image: url('http://c.ganjoor.net/t/3/b.gif');
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-position: 100% 100%;
+    }
+
+    .ganjoor-poet {
+        width: 80%;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+        .ganjoor-poet a {
+            text-decoration: none;
+            color: #366
+        }
+</style>
+<p>
+    این بلوک که طراحی آن با استفاده از تصاویر سایت <a href="http://www.persopedia.com">پرسوپدیا نقطه کام</a> انجام شده، دارای عرض ثابت ۲۵۰ پیکسلی است و به طور خودکار در میانه‏ی بلوک حاوی آن جا می‏گیرد. می‏توانید از این بلوک علاوه بر میانه‏ی مطالب در نوارهای کناری به اندازه‏ی کافی عریض وبلاگها استفاده کنید.  نمونه‏ی نمایش یک تک بیت با این کد را می‏بینید:
+</p>
+<div id="takbeyt"></div>
+<p>
+    نمونه‏ی نمایش رباعی با این کد:
+</p>
+<div id="robaee"></div>
+<p>
+    برای بارگذاری مجدد صفحه با شعرهای تصادفی دیگر <a href="http://c.ganjoor.net/theme3">اینجا</a> کلیک کنید.
+</p>
+<p>
+    برای درج در قالب وبلاگ -ابتدا از قالب کنونی خود پشتیبان بگیرید، محل درج را مشخص کنید و سپس- این کد را از جعبه‏ی متنی زیر کپی و در محل مناسب درج کنید:
+</p>
+<div style="width:100%;text-align:left">
+<textarea class="inputTextarea" rows="15" cols="120" style="direction:ltr;text-align:left;">
+&lt;style type="text/css"&gt;
+.ganjoor-block{width:250px;display:block;margin:auto;text-align:center;background-image:url('http://c.ganjoor.net/t/3/t.gif');background-repeat: no-repeat;background-attachment:scroll;background-position:top;padding-top:99px}
+.ganjoor-block-title{display:block;font:normal 13px tahoma;background-image:url('http://c.ganjoor.net/t/3/tm.gif');background-repeat: no-repeat;height:26px;padding-top:4px;margin:0px;}
+.ganjoor-poem-block{display:block;width:100%;background-image:url('http://c.ganjoor.net/t/3/m.gif');background-repeat: repeat-y;padding-top:30px;}
+.ganjoor-m1{width:100%;display:block;}
+.ganjoor-m2{width:100%;display:block;}
+.ganjoor-footer{display:block;width:100%;display:block;background-image:url('http://c.ganjoor.net/t/3/b.gif');background-repeat: no-repeat;background-attachment:scroll;background-position:100% 100%;}
+.ganjoor-poet{width:80%;text-align:left;margin-bottom:10px;}
+.ganjoor-poet a{text-decoration:none; color:#366}
+&lt;/style>
+&lt;script type="text/javascript" language="JavaScript" src="http://c.ganjoor.net/beyt.php"&gt;&lt;/script&gt;
+</textarea>
+</div>
+
+<script type="text/javascript" language="JavaScript" src="http://c.ganjoor.net/beyt.php?block=takbeyt"></script>
+
+<script type="text/javascript" language="JavaScript">ganjoorblocktitle = 'پندی از خیام';</script>
+<script type="text/javascript" language="JavaScript" src="http://c.ganjoor.net/beyt.php?p=3&amp;a=1&amp;block=robaee"></script>
