@@ -16,9 +16,9 @@ namespace GanjoorRandomPoemService.Pages
             Response.ContentType = "text/javascript;charset=utf-8";
 
             BlockToUpdate = "";
-            if (!string.IsNullOrEmpty(Request.Query["block"]))
+            if (!string.IsNullOrEmpty(Q("block")))
             {
-                BlockToUpdate = Request.Query["block"];
+                BlockToUpdate = Q("block");
             }
 
             int poetId = 0;
@@ -28,9 +28,9 @@ namespace GanjoorRandomPoemService.Pages
             }
 
             bool twoCouplets = false;
-            if (!string.IsNullOrEmpty(Request.Query["a"]))
+            if (!string.IsNullOrEmpty(Q("a")))
             {
-                twoCouplets = Request.Query["a"] == "1";
+                twoCouplets = Q("a") == "1";
             }
 
             var response = await Client.GetAsync($"{Configuration["APIRoot"]}/api/ganjoor/poem/random?poetId={poetId}");
@@ -86,6 +86,17 @@ namespace GanjoorRandomPoemService.Pages
             }
 
             return Page();
+        }
+
+        /// <summary>
+        /// query value that also tolerates HTML-escaped separators (a copied "&amp;amp;a=1" arrives as the key "amp;a")
+        /// </summary>
+        private string Q(string key)
+        {
+            string v = Request.Query[key];
+            if (string.IsNullOrEmpty(v))
+                v = Request.Query["amp;" + key];
+            return v;
         }
 
         protected readonly HttpClient Client;

@@ -14,9 +14,9 @@ namespace GanjoorRandomPoemService.Pages
             Response.Headers.Append("Access-Control", "allow <*>");
 
             int reqNum = 1;
-            if (!string.IsNullOrEmpty(Request.Query["n"]))
+            if (!string.IsNullOrEmpty(Q("n")))
             {
-                reqNum = int.Parse(Request.Query["n"]);
+                reqNum = int.Parse(Q("n"));
                 if(reqNum < 1 || reqNum > 20)
                 {
                     reqNum = 1;
@@ -24,9 +24,9 @@ namespace GanjoorRandomPoemService.Pages
             }
 
             bool numberedItems = false;
-            if (!string.IsNullOrEmpty(Request.Query["l"]))
+            if (!string.IsNullOrEmpty(Q("l")))
             {
-                numberedItems = Request.Query["l"] != "0";
+                numberedItems = Q("l") != "0";
             }
 
 
@@ -37,9 +37,9 @@ namespace GanjoorRandomPoemService.Pages
             }
 
             bool twoCouplets = false;
-            if (!string.IsNullOrEmpty(Request.Query["a"]))
+            if (!string.IsNullOrEmpty(Q("a")))
             {
-                twoCouplets = Request.Query["a"] == "1";
+                twoCouplets = Q("a") == "1";
             }
 
             List<XmlPoem> list = new List<XmlPoem>();
@@ -113,6 +113,17 @@ namespace GanjoorRandomPoemService.Pages
             Poems = list.ToArray();
 
             return Page();
+        }
+
+        /// <summary>
+        /// query value that also tolerates HTML-escaped separators (a copied "&amp;amp;a=1" arrives as the key "amp;a")
+        /// </summary>
+        private string Q(string key)
+        {
+            string v = Request.Query[key];
+            if (string.IsNullOrEmpty(v))
+                v = Request.Query["amp;" + key];
+            return v;
         }
 
         protected readonly HttpClient Client;
