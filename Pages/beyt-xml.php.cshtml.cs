@@ -65,7 +65,7 @@ namespace GanjoorRandomPoemService.Pages
                 }
                 string poemUrl = $"https://ganjoor.net{poem.fullUrl}";
                 string poetName = poem.fullTitle;
-                poetName = poetName.Substring(0, poetName.IndexOf("»")).Trim();
+                poetName = poetName.Substring(0, poetName.IndexOf('\u00bb')).Trim();
                 List<Verse> verses = new List<Verse>();
                 List<Couplet> couplets = new List<Couplet>();
                 foreach (var item in poem.verses)
@@ -92,17 +92,17 @@ namespace GanjoorRandomPoemService.Pages
                     PoetName = poetName,
                 };
 
-                Random r = new Random(DateTime.Now.Millisecond);
+                Random r = Random.Shared;
                 if (twoCouplets && couplets.Count > 1)
                 {
-                    int index = r.Next(0, couplets.Count - 2);
+                    int index = r.Next(0, couplets.Count - 1);
                     couplets[index].Index = 1;
                     couplets[index + 1].Index = 2;
                     x.Couplets = [couplets[index], couplets[index + 1]];
                 }
                 else
                 {
-                    int index = r.Next(0, couplets.Count - 1);
+                    int index = r.Next(0, couplets.Count);
                     couplets[index].Index = 1;
                     x.Couplets = [couplets[index]];
                 }
